@@ -40,9 +40,6 @@ SSO start URL에 저희 Organization start URL인 `https://d-9267ca4957.awsapps.
 SSO region은 us-west-2.
 SSO registration scopes는 기본 값으로 두시면 됩니다.
 
-열리는 브라우저 창에서 로그인
-id : blueteam-test1
-pw : Zmffkdnemtlzbflxl1!
 
 다시 터미널
 Default client Region은 us-west-2
@@ -63,6 +60,7 @@ export AWS_PROFILE=<프로필 이름> => $env:AWS_PROFILE="blueteam"
    **`ORG/REPO`가 아니라 숫자 ID가 붙은 형식이어야 한다.** GitHub OIDC 토큰의 `sub`가 `repo:ORG@<id>/REPO@<id>:ref:refs/heads/main` 형태라서 신뢰 정책이 이 문자열과 **정확히 일치**해야 한다. 조회:
    ```bash
    gh api repos/<계정>/<저장소> --jq '"\(.owner.login)@\(.owner.id)/\(.name)@\(.id)"'
+   => $repo = gh api repos/hanaxpark/whitehat-project | ConvertFrom-Json"$($repo.owner.login)@$($repo.owner.id)/$($repo.name)@$($repo.id)"
    # gh가 없고 public이면:
    curl -s https://api.github.com/repos/<계정>/<저장소> | jq -r '"\(.owner.login)@\(.owner.id)/\(.name)@\(.id)"'
    ```
@@ -79,6 +77,7 @@ plan에서 확인: **기존 리소스의 destroy/replace가 0건**이고, 기존
 ### 3. ECR과 OIDC 먼저 생성
 ```bash
 terraform apply -target=aws_ecr_repository.svc -target=aws_iam_openid_connect_provider.github
+=> terraform apply '-target=aws_ecr_repository.svc' '-target=aws_iam_openid_connect_provider.github'
 ```
 
 ### 4. 첫 이미지(`bootstrap` 태그) push — 이미지 없이 서비스를 만들면 태스크가 계속 실패한다
