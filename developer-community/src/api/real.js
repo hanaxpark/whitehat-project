@@ -22,7 +22,8 @@ const real = {
     await request('/api/auth/register', { method: 'POST', body: { username: email, email, password, nickname } });
     return real.login({ email, password, remember });
   },
-  async logout() { clearToken(); return null; }, // ?쒕쾭 ?몄뀡???녿뒗 JWT 諛⑹떇?대씪 ?좏겙留?踰꾨┛??  async me() { return toUser(await request('/api/users/me')); },
+  async logout() { clearToken(); return null; },
+  async me() { return toUser(await request('/api/users/me')); },
   async updateProfile({ nickname }) {
     await request('/api/users/me', { method: 'PATCH', body: { nickname } });
     return real.me();
@@ -80,4 +81,5 @@ return {...real,
   adminDeleteComment: (id,reason) => adminRequest(`/api/comments/admin/comments/${enc(id)}`,{method:'DELETE',body:{reason}}),
 };
 }
+
 
