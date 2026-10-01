@@ -1,4 +1,4 @@
-# 수동으로 만든 기존 인프라는 조회만 한다 (state에 넣지 않음).
+# ??롫짗??곗쨮 筌띾슢諭?疫꿸퀣???紐낅늄??곕뮉 鈺곌퀬?띰쭕???뺣뼄 (state???節? ??놁벉).
 data "aws_vpc" "main" {
   tags = { Name = "whs-vpc" }
 }
@@ -46,9 +46,28 @@ data "aws_db_instance" "db" {
 locals {
   db_secret_arn = data.aws_db_instance.db.master_user_secret[0].secret_arn
 
-  # 경로는 코드 기준: users = /api/auth, /api/users, contents = /api/posts(댓글·좋아요 포함), /api/comments
+  # 野껋럥以???꾨뗀諭?疫꿸퀣?: users = /api/auth, /api/users, contents = /api/posts(?蹂?夷뚪넫??툡????釉?, /api/comments
   services = {
-    users    = { priority = 10, paths = ["/api/auth/*", "/api/users", "/api/users/*"] }
-    contents = { priority = 11, paths = ["/api/posts*", "/api/comments/*"] }
+    users = {
+      priority = 10
+      paths = [
+        "/api/auth/*",
+        "/api/users",
+        "/api/users/*",
+        "/api/admin/users*"
+      ]
+    }
+
+    contents = {
+      priority = 11
+      paths = [
+        "/api/posts*",
+        "/api/comments/*",
+        "/api/admin/posts*",
+        "/api/admin/comments*"
+      ]
+    }
   }
 }
+
+

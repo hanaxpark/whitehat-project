@@ -1,4 +1,5 @@
 const db=require('../config/db');
+const jwt=require('jsonwebtoken');
 
 exports.list=async(req,res)=>{
   const {q='',category='',sort='latest'}=req.query;
@@ -7,7 +8,7 @@ exports.list=async(req,res)=>{
   if(category){where+=' AND p.category=?'; params.push(category);}
   const order=sort==='popular'?'like_count DESC, p.created_at DESC':'p.created_at DESC';
   const [rows]=await db.execute(`
-    SELECT p.id,p.title,p.category,p.image_url,p.view_count,p.created_at,u.nickname,
+    SELECT p.id,p.user_id,p.title,p.category,p.image_url,p.view_count,p.created_at,u.nickname,
     (SELECT COUNT(*) FROM likes l WHERE l.post_id=p.id) AS like_count,
     (SELECT COUNT(*) FROM comments c WHERE c.post_id=p.id) AS comment_count
     FROM posts p JOIN users u ON u.id=p.user_id ${where}
@@ -17,9 +18,15 @@ exports.list=async(req,res)=>{
 
 exports.detail=async(req,res)=>{
   await db.execute('UPDATE posts SET view_count=view_count+1 WHERE id=?',[req.params.id]);
-  const [rows]=await db.execute('SELECT p.*,u.nickname FROM posts p JOIN users u ON u.id=p.user_id WHERE p.id=?',[req.params.id]);
+  const [rows]=await db.execute(`SELECT p.*,u.nickname,
+    (SELECT COUNT(*) FROM likes l WHERE l.post_id=p.id) AS like_count,
+    (SELECT COUNT(*) FROM comments c WHERE c.post_id=p.id) AS comment_count
+    FROM posts p JOIN users u ON u.id=p.user_id WHERE p.id=?`,[req.params.id]);
   if(!rows[0]) return res.status(404).json({message:'Post not found'});
-  res.json(rows[0]);
+  // 상세는 공개 API라 auth 미들웨어 없이, 토큰이 유효할 때만 현재 사용자의 좋아요 여부를 붙인다.
+  let uid=null; try{uid=jwt.verify((req.headers.authorization||'').slice(7),process.env.JWT_SECRET).id;}catch{}
+  const liked=uid!=null&&(await db.execute('SELECT 1 FROM likes WHERE user_id=? AND post_id=?',[uid,req.params.id]))[0].length>0;
+  res.json({...rows[0],liked});
 };
 
 exports.create=async(req,res)=>{
