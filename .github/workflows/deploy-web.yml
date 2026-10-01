@@ -1,0 +1,52 @@
+name: deploy-web
+
+on:
+  push:
+    branches: [main]
+    paths: ["developer-community/**"]
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  AWS_REGION: us-west-2
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: developer-community/package-lock.json
+
+      # 운영 빌드는 .env.production(VITE_DATA_MODE=api)을 쓴다.
+      - run: npm ci && npm test && npm run build
+        working-directory: developer-community
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.WEB_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      # dist와 nginx 설정을 묶어 S3에 올리고, SSM으로 web EC2가 받아 /var/www/nangiryu/dist에 풀고 nginx를 reload한다.
+      - run: |
+          BUCKET=blueteam-deploy-$(aws sts get-caller-identity --query Account --output text)
+          KEY=web/${{ github.sha }}.tgz
+          tar -czf web.tgz -C developer-community dist deploy/nginx.conf
+          aws s3 cp web.tgz "s3://$BUCKET/$KEY"
+          jq -n --arg b "$BUCKET" --arg k "$KEY" --arg r "$AWS_REGION" '{commands: [
+            "set -e",
+            "aws s3 cp s3://\($b)/\($k) /tmp/web.tgz --region \($r)",
+            "rm -rf /tmp/web && mkdir /tmp/web && tar -xzf /tmp/web.tgz -C /tmp/web",
+            "mkdir -p /var/www/nangiryu && rm -rf /var/www/nangiryu/dist && mv /tmp/web/dist /var/www/nangiryu/dist",
+            "cp /tmp/web/deploy/nginx.conf /etc/nginx/conf.d/community.conf",
+            "nginx -t && systemctl reload nginx"
+          ]}' > params.json
+          CMD=$(aws ssm send-command --instance-ids "${{ vars.WEB_INSTANCE_ID }}" --document-name AWS-RunShellScript \
+            --parameters file://params.json --query Command.CommandId --output text)
+          aws ssm wait command-executed --command-id "$CMD" --instance-id "${{ vars.WEB_INSTANCE_ID }}"

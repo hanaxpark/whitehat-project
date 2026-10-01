@@ -1,0 +1,33 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { createMockApi } from '../src/api/mock.js';
+const memory = () => {const map=new Map();return {getItem:k=>map.get(k)||null,setItem:(k,v)=>map.set(k,v),removeItem:k=>map.delete(k)};};
+test('로그인, 글/댓글/좋아요, 소유권, 프로필, 데이터 유지',async()=>{
+  const storage=memory(),session=memory(),api=createMockApi(storage,session);
+  await assert.rejects(api.me(),e=>e.status===401);
+  await assert.rejects(api.login({email:'demo@example.com',password:'wrong'}),e=>e.status===401);
+  const user=await api.login({email:'demo@example.com',password:'Demo1234!',remember:true});
+  assert.equal(user.password,undefined);
+  const saved=await api.createPost({title:'검증용 글',content:'내용',category:'frontend',type:'blog',tags:['React']});
+  assert.equal(saved.authorId,user.id);
+  const found=await api.listPosts({q:'검증용',category:'frontend'});assert.equal(found.total,1);
+  await api.updatePost(saved.id,{title:'수정됨',content:'수정 내용',category:'frontend',tags:[]});assert.equal((await api.getPost(saved.id)).title,'수정됨');
+  await api.likePost(saved.id,true);await api.likePost(saved.id,true);assert.equal((await api.getPost(saved.id)).likeCount,1);
+  await api.likePost(saved.id,false);assert.equal((await api.getPost(saved.id)).likeCount,0);
+  const c=await api.createComment({postId:saved.id,content:'댓글'});assert.equal((await api.getPost(saved.id)).commentCount,1);
+  await api.deleteComment(c.id);assert.equal((await api.listComments(saved.id)).length,0);
+  await assert.rejects(api.updatePost('p2',{title:'x',content:'y',category:'general'}),e=>e.status===403);
+  await api.updateProfile({nickname:'테스터',bio:'소개'});assert.equal((await api.me()).nickname,'테스터');
+  const reloaded=createMockApi(storage,session);assert.equal((await reloaded.me()).nickname,'테스터');
+  await api.createComment({postId:saved.id,content:'연결된 댓글'});await api.deletePost(saved.id);await assert.rejects(api.getPost(saved.id),e=>e.status===404);
+  await api.logout();await assert.rejects(api.createPost({}),e=>e.status===401);
+});
+test('가입 중복, 빈 글 검증, 검색 및 페이지',async()=>{
+  const api=createMockApi(memory(),memory());
+  await assert.rejects(api.register({email:'demo@example.com',password:'Demo1234!',nickname:'dup'}),e=>e.status===409);
+  await api.register({email:'new@example.com',password:'Password123!',nickname:'새사용자'});
+  await assert.rejects(api.createPost({title:' ',content:'text',category:'general'}),e=>e.status===422);
+  const list=await api.listPosts({page:2,pageSize:5});assert.equal(list.items.length,2);assert.equal(list.total,7);
+  assert.equal((await api.listPosts({q:'찾을수없는문자'})).total,0);
+  assert.equal((await api.profileActivity('posts')).items.length,0);
+});
