@@ -1,0 +1,56 @@
+name: deploy (reusable)
+
+on:
+  workflow_call:
+    inputs:
+      service:
+        type: string
+        required: true
+      role-arn:
+        type: string
+        required: true
+
+env:
+  AWS_REGION: us-west-2
+  CLUSTER: blueteam
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ inputs.role-arn }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - id: ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - id: build
+        run: |
+          IMAGE=${{ steps.ecr.outputs.registry }}/${{ inputs.service }}-service:${{ github.sha }}
+          docker build -t "$IMAGE" ${{ inputs.service }}-service
+          docker push "$IMAGE"
+          echo "image=$IMAGE" >> "$GITHUB_OUTPUT"
+
+      # 최신 revision을 기준으로 이미지만 교체한다 (환경변수/시크릿 설정은 Terraform이 만든 그대로).
+      - run: aws ecs describe-task-definition --task-definition ${{ inputs.service }}-service --query taskDefinition > td.json
+
+      - id: render
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: td.json
+          container-name: ${{ inputs.service }}
+          image: ${{ steps.build.outputs.image }}
+
+      - uses: aws-actions/amazon-ecs-deploy-task-definition@v2
+        with:
+          task-definition: ${{ steps.render.outputs.task-definition }}
+          service: ${{ inputs.service }}-service
+          cluster: ${{ env.CLUSTER }}
+          wait-for-service-stability: true
