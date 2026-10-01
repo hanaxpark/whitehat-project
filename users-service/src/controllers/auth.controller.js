@@ -1,4 +1,4 @@
-const bcrypt = require('bcryptjs');
+﻿const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const db = require('../config/db');
 
@@ -22,7 +22,7 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
   const { username, password } = req.body;
-  const [rows] = await db.execute('SELECT * FROM users WHERE username=? LIMIT 1',[username]);
+  const [rows] = await db.execute('SELECT * FROM users WHERE username=? OR email=? LIMIT 1',[username, username]);
   const user = rows[0];
   if (!user || !(await bcrypt.compare(password, user.password_hash)))
     return res.status(401).json({ message:'Invalid credentials' });
@@ -30,3 +30,4 @@ exports.login = async (req, res) => {
   const token = jwt.sign({ id:user.id, role:user.role }, process.env.JWT_SECRET, { expiresIn:'2h' });
   res.json({ token, user:{ id:user.id, username:user.username, nickname:user.nickname, role:user.role } });
 };
+
