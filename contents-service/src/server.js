@@ -7,7 +7,9 @@ app.get('/health',async(req,res)=>{try{await db.query('SELECT 1');res.json({ok:t
 app.use('/api/posts',require('./routes/posts.routes'));
 app.use('/api',require('./routes/comments.routes'));
 app.use('/api',require('./routes/likes.routes'));
-app.use('/api/admin',require('./routes/admin.routes'));
+app.use('/api/posts/admin/posts',require('./routes/admin-posts.routes'));
+app.use('/api/comments/admin/comments',require('./routes/admin-comments.routes'));
 const port=Number(process.env.PORT||3000);
 app.listen(port,'0.0.0.0',()=>console.log(`contents-service listening on ${port}`));
+
 

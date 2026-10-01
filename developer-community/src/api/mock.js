@@ -1,5 +1,5 @@
 import { ApiError } from './errors.js';
-const KEY = 'nangiryu-demo-v1';
+const KEY = 'nangiryu-demo-v2';
 const SESSION = 'nangiryu-demo-session';
 const iso = hours => new Date(Date.now() - hours * 3600000).toISOString();
 const seed = () => ({ users: [
@@ -14,13 +14,22 @@ const seed = () => ({ users: [
   { id:'p6', authorId:'u1', title:'React에서 API 상태를 다루는 방법', category:'frontend', type:'blog', tags:['React','API'], content:'로딩, 오류, 빈 결과를 각각 명확하게 보여주면 사용자가 현재 상태를 이해하기 쉽습니다.', likes:[], views:29, createdAt:iso(72), updatedAt:iso(72) },
   { id:'p7', authorId:'u2', title:'AWS 자격증 스터디 함께해요', category:'study', type:'question', tags:['AWS','스터디'], content:'매주 학습 내용을 정리하고 질문을 나누는 스터디를 시작하려고 합니다.', likes:[], views:14, createdAt:iso(96), updatedAt:iso(96) },
 ], comments: [ { id:'c1',postId:'p1',authorId:'u2',content:'정말 잘 정리되어 있네요! 보안 그룹 설정도 공유해주세요.',createdAt:iso(1) }, {id:'c2',postId:'p1',authorId:'u1',content:'다음 글에서 서비스별 보안 그룹 설정도 정리해볼게요.',createdAt:iso(.5)} ] });
+const adminSeed = () => ({id:'admin-demo-1',email:'admin@example.com',password:'Admin1234!',nickname:'community_admin',bio:'난기류 운영팀',role:'admin',joinedAt:'2026-01-01T00:00:00Z'});
 export function createMockApi(storage = localStorage, session = sessionStorage) {
-  let db; try { db = JSON.parse(storage.getItem(KEY)); } catch { /* 손상된 데모 데이터는 초기화 */ }
+  let db; try { db = JSON.parse(storage.getItem(KEY) || storage.getItem('nangiryu-demo-v1')); } catch { /* 손상된 데모 데이터는 초기화 */ }
   if (!db?.users || !db?.posts || !db?.comments) db = seed();
+  // 기존 사용자에게 관리자 권한을 자동 부여하지 않습니다.
+  db.users = db.users.map(u=>({...u,role:u.role==='admin'?'admin':'user'}));
+  if (!db.users.some(u=>u.email==='admin@example.com'||u.id==='admin-demo-1')) db.users.push(adminSeed());
+  db.audit ||= [];
   const save = () => storage.setItem(KEY, JSON.stringify(db));
-  const publicUser = user => { const { password, ...safe } = user; return safe; };
+  const publicUser = user => { const { password, ...safe } = user; return {role:'user',...safe}; };
   const current = () => db.users.find(u => u.id === (session.getItem(SESSION) || storage.getItem(SESSION)));
   const requireUser = () => { const u = current(); if (!u) throw new ApiError('로그인이 필요합니다.',401,'UNAUTHORIZED'); return u; };
+  const requireAdmin = () => {const u=requireUser();if(u.role!=='admin')throw new ApiError('관리자 권한이 필요합니다.',403,'FORBIDDEN');return u;};
+  const moderationReason = value => {const text=String(value||'').trim();if(text.length<2||text.length>300)throw new ApiError('삭제 사유를 2~300자로 입력해주세요.',422,'VALIDATION');return text;};
+  const paginate = (items,{page=1,pageSize=10}={}) => {page=Math.max(1,Number(page)||1);pageSize=Math.min(100,Math.max(1,Number(pageSize)||10));return {items:items.slice((page-1)*pageSize,page*pageSize),total:items.length,page,pageSize};};
+  const matches = (q,...values) => !q || values.join(' ').toLowerCase().includes(q.toLowerCase());
   const post = id => { const p = db.posts.find(p => p.id === id); if(!p) throw new ApiError('게시글을 찾을 수 없습니다.',404,'NOT_FOUND'); return p; };
   const own = p => { if (p.authorId !== requireUser().id) throw new ApiError('작성자만 수정하거나 삭제할 수 있습니다.',403,'FORBIDDEN'); };
   const decorate = p => ({ ...p, author:publicUser(db.users.find(u => u.id === p.authorId)), likeCount:p.likes.length, liked:p.likes.includes(current()?.id), commentCount:db.comments.filter(c=>c.postId===p.id).length, likes:undefined });
@@ -42,6 +51,11 @@ export function createMockApi(storage = localStorage, session = sessionStorage) 
     async createComment({postId,content}) {const u=requireUser();post(postId);if(!content?.trim())throw new ApiError('댓글을 입력해주세요.',422,'VALIDATION');const c={id:crypto.randomUUID(),postId,authorId:u.id,content:content.trim(),createdAt:new Date().toISOString()};db.comments.push(c);save();return comment(c);},
     async deleteComment(id) {const c=db.comments.find(c=>c.id===id);if(!c)throw new ApiError('댓글을 찾을 수 없습니다.',404);own(c);db.comments=db.comments.filter(c=>c.id!==id);save();},
     async profileActivity(kind) {const u=requireUser();const mine=db.posts.filter(p=>p.authorId===u.id);return {stats:{posts:mine.length,comments:db.comments.filter(c=>c.authorId===u.id).length,likes:mine.reduce((sum,p)=>sum+p.likes.length,0)},items:kind==='comments'?db.comments.filter(c=>c.authorId===u.id).map(comment):db.posts.filter(p=>kind==='liked'?p.likes.includes(u.id):p.authorId===u.id).map(decorate)};},
+    async adminListUsers({q='',...params}={}) {requireAdmin();return paginate(db.users.filter(u=>matches(q,u.id,u.email,u.nickname)).map(publicUser),params);},
+    async adminListPosts({q='',category='',...params}={}) {requireAdmin();return paginate(db.posts.filter(p=>(!category||p.category===category)&&matches(q,p.title,p.content,db.users.find(u=>u.id===p.authorId)?.nickname)).sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt)).map(decorate),params);},
+    async adminListComments({q='',...params}={}) {requireAdmin();return paginate(db.comments.filter(c=>matches(q,c.content,db.users.find(u=>u.id===c.authorId)?.nickname)).sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt)).map(c=>({...comment(c),postTitle:post(c.postId).title})),params);},
+    async adminDeletePost(id,reason) {const admin=requireAdmin();const clean=moderationReason(reason);post(id);db.posts=db.posts.filter(p=>p.id!==id);db.comments=db.comments.filter(c=>c.postId!==id);db.audit.push({actorId:admin.id,type:'post_delete',targetId:id,reason:clean,createdAt:new Date().toISOString()});save();},
+    async adminDeleteComment(id,reason) {const admin=requireAdmin();const clean=moderationReason(reason);if(!db.comments.some(c=>c.id===id))throw new ApiError('댓글을 찾을 수 없습니다.',404,'NOT_FOUND');db.comments=db.comments.filter(c=>c.id!==id);db.audit.push({actorId:admin.id,type:'comment_delete',targetId:id,reason:clean,createdAt:new Date().toISOString()});save();},
   };
 }
 export const mockApi = typeof localStorage === 'undefined' ? null : createMockApi();

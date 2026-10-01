@@ -1,0 +1,347 @@
+<!DOCTYPE html><html lang="ko" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "tertiary": "#005b7c",
+        "surface-container-high": "#dce9ff",
+        "on-error-container": "#93000a",
+        "on-error": "#ffffff",
+        "secondary-container": "#dae2fd",
+        "on-primary-fixed-variant": "#003ea8",
+        "on-secondary-container": "#5c647a",
+        "on-primary": "#ffffff",
+        "surface-container-low": "#eff4ff",
+        "tertiary-fixed-dim": "#7bd0ff",
+        "on-secondary-fixed": "#131b2e",
+        "surface-variant": "#d3e4fe",
+        "on-background": "#0b1c30",
+        "on-primary-fixed": "#00174b",
+        "error-container": "#ffdad6",
+        "primary-fixed-dim": "#b4c5ff",
+        "on-surface-variant": "#434655",
+        "surface-container": "#e5eeff",
+        "on-tertiary-container": "#e1f2ff",
+        "on-surface": "#0b1c30",
+        "surface-container-lowest": "#ffffff",
+        "primary-container": "#2563eb",
+        "primary": "#004ac6",
+        "primary-fixed": "#dbe1ff",
+        "on-tertiary-fixed-variant": "#004c69",
+        "secondary-fixed": "#dae2fd",
+        "outline": "#737686",
+        "secondary-fixed-dim": "#bec6e0",
+        "inverse-surface": "#213145",
+        "on-tertiary": "#ffffff",
+        "secondary": "#565e74",
+        "on-secondary-fixed-variant": "#3f465c",
+        "on-tertiary-fixed": "#001e2c",
+        "on-secondary": "#ffffff",
+        "outline-variant": "#c3c6d7",
+        "surface-bright": "#f8f9ff",
+        "tertiary-container": "#00759f",
+        "on-primary-container": "#eeefff",
+        "error": "#ba1a1a",
+        "tertiary-fixed": "#c4e7ff",
+        "surface-tint": "#0053db",
+        "inverse-on-surface": "#eaf1ff",
+        "surface": "#f8f9ff",
+        "inverse-primary": "#b4c5ff",
+        "background": "#f8f9ff",
+        "surface-container-highest": "#d3e4fe",
+        "surface-dim": "#cbdbf5"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.125rem",
+        "lg": "0.25rem",
+        "xl": "0.5rem",
+        "full": "0.75rem"
+      },
+      "spacing": {
+        "margin": "2rem",
+        "space-xs": "0.25rem",
+        "space-lg": "1.5rem",
+        "margin-mobile": "1rem",
+        "space-md": "1rem",
+        "space-xl": "2rem",
+        "space-sm": "0.5rem",
+        "gutter": "1.5rem",
+        "gutter-mobile": "0.75rem"
+      },
+      "fontFamily": {
+        "code-snippet": ["Inter"],
+        "body-sm": ["Inter"],
+        "display-hero-mobile": ["Inter"],
+        "headline-lg": ["Inter"],
+        "label-sm": ["Inter"],
+        "headline-md": ["Inter"],
+        "body-lg": ["Inter"],
+        "body-md": ["Inter"],
+        "display-hero": ["Inter"],
+        "label-md": ["Inter"],
+        "headline-sm": ["Inter"]
+      },
+      "fontSize": {
+        "code-snippet": ["13px", {"lineHeight": "20px", "fontWeight": "400"}],
+        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+        "display-hero-mobile": ["26px", {"lineHeight": "36px", "fontWeight": "700"}],
+        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+        "body-lg": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+        "body-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+        "display-hero": ["36px", {"lineHeight": "48px", "fontWeight": "800"}],
+        "label-md": ["13px", {"lineHeight": "16px", "fontWeight": "500"}],
+        "headline-sm": ["16px", {"lineHeight": "24px", "fontWeight": "600"}]
+      }
+    }
+  }
+}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-[#0F172A] shadow-[0_1px_8px_rgba(0,0,0,0.15)]"><div class="h-16 max-w-7xl mx-auto px-6 flex items-center justify-between gap-4"><div class="flex items-center gap-6"><a class="flex items-center gap-3" data-path="main-page" href="#"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDpdDpLymq1UplLwRalzlS2WGtNzvTXB8NvNPxccb2YGYSWkgg6mxM-RSsffppN1Od4ixmYZzQmgWLlM2WB-JnrUbMFDqz9je5RW13fdZSmJ7a9u6JKMz9UdZECe58PwG0N3Cplch3Fcct5gEvwNVyZNdpSwePViqGOBHlPhliE61_gdSXL10LqaLgEBS2IWvgIUMvGnxdA3FQfW8QIwH7XeQYAUPLE_MoBqMzm1A8j9CoKjCH9J3IMeG-Jp1BTZX-QQ" alt="난기류" class="h-9 w-auto object-contain"></a><nav class="hidden lg:flex items-center gap-6" data-active-classes="text-white font-bold"><a class="font-label-md text-label-md text-slate-400 hover:text-white transition-colors" data-path="posts-list" href="#">커뮤니티</a><a class="font-label-md text-label-md text-slate-400 hover:text-white transition-colors" data-path="post-write" href="#">Q&amp;A</a><a aria-current="page" class="transition-colors text-white font-bold" data-path="my-page" href="#">기술블로그</a></nav></div><div class="flex-1 max-w-[480px] hidden md:block"><div class="relative flex items-center w-full"><span class="material-symbols-outlined absolute left-3.5 text-slate-400 text-[20px] pointer-events-none">search</span><input class="w-full h-10 pl-10 pr-4 bg-[#1E293B] border border-slate-700/60 rounded-xl text-white placeholder-slate-400 font-body-sm text-body-sm focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" placeholder="게시글, 태그, 사용자 검색..." type="text"></div></div><div class="flex items-center gap-3"><a class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md rounded-lg transition-colors shadow-sm" data-path="post-write" href="#"><span class="material-symbols-outlined text-[18px]">edit_square</span><span class="">글쓰기</span></a><button class="p-2 text-slate-400 hover:text-white rounded-lg transition-colors relative" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary-container"></span></button><a class="flex items-center" data-path="my-page" href="#"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></a></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-140px)]"><div class="flex flex-col w-full">
+<div class="w-full max-w-[920px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
+<!-- Profile Card Wrapper (White Box Elevation) -->
+<div class="w-full bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<!-- Top Cover Image -->
+<div class="w-full h-36 sm:h-44 bg-cover bg-center relative" data-alt="Stunning panoramic mountain range at warm dusk and golden sunset with layered peaks and orange purple sky background in soft developer tech banner aesthetic" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBYYuGV17FPueSgMo_EPlyLDbK-Qlb4drpxw59SqyRQlELHw2qanro8S5PE7q7eDAD9j-viR38HwL28JCVgyZHMwtj6htzlqryVgqdFL1Qe3S5T5hC45xX4aU7tYOMAEZLnhNw4C6VegW3vLUnQesqfNtxYrrzRgzQmkY9n0o5zA73J81jBVnPKJKyblRY2_3E59AwW_6gIzvY7_l7BVzNiQ6_S3wu4ubVhxjchMMcqA8O_tJ4sgZE3')">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+</div>
+<!-- Profile Header Area -->
+<div class="px-6 sm:px-8 pb-6">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between -mt-12 sm:-mt-14 mb-6 gap-4">
+<!-- Avatar & User Info -->
+<div class="flex items-end gap-4">
+<div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-surface-container-lowest p-1 shadow-md">
+<div class="w-full h-full rounded-full overflow-hidden bg-surface-container-high flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Modern illustrated avatar of a friendly software engineer with glasses, dark hair, wearing a navy casual hoodie, clean digital tech avatar portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYmGl0JOZZw-ke2E6EArNMuq4BXVGAHnAqe6skMLcaJv31lMvf0CFJ0Cor5wXNah-zSZXFjAqFQ3N2djEyhg18Dv2AG2ZupCxNx8hWpf772WcV6WkZj_hZXO3QWm5UXBRUYdTPib4F63mlxHzjG61JhE2YCeForEYcFpvtTMijPym-LbtWmlDn2sFQjGjQ58-8E9QdD8YPY4qHVjKZpG46Z4p3SUy-bmYrliKS_7MIzJ-daZqvw3DW">
+</div>
+</div>
+<div class="mb-1">
+<div class="flex items-center gap-2">
+<h1 class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight">cloud_dev</h1>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary-container text-primary-container font-label-sm text-label-sm font-semibold">Pro Dev</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary font-medium">@cloud_dev</p>
+</div>
+</div>
+<!-- Edit Profile Button -->
+<div class="flex items-center gap-2">
+<button class="px-4 py-2 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded-lg transition-colors flex items-center gap-1.5 shadow-sm" id="edit-profile-btn" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">edit</span>
+<span class="">프로필 수정</span>
+</button>
+</div>
+</div>
+<!-- User Statistics 4-Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-surface-container-low rounded-xl p-4 sm:p-5">
+<div class="flex flex-col items-center justify-center py-1">
+<span class="font-label-sm text-label-sm text-secondary mb-1">게시글</span>
+<span class="font-headline-md text-headline-md text-on-surface font-bold">42</span>
+</div>
+<div class="flex flex-col items-center justify-center py-1">
+<span class="font-label-sm text-label-sm text-secondary mb-1">댓글</span>
+<span class="font-headline-md text-headline-md text-on-surface font-bold">128</span>
+</div>
+<div class="flex flex-col items-center justify-center py-1">
+<span class="font-label-sm text-label-sm text-secondary mb-1">좋아요</span>
+<span class="font-headline-md text-headline-md text-primary-container font-bold">310</span>
+</div>
+<div class="flex flex-col items-center justify-center py-1">
+<span class="font-label-sm text-label-sm text-secondary mb-1">가입일</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold mt-0.5">2024.10.01</span>
+</div>
+</div>
+</div>
+<!-- Main Profile Sub-Content (2-Column Layout) -->
+<div class="px-6 sm:px-8 pb-8 pt-2">
+<div class="flex flex-col md:flex-row gap-6 sm:gap-8 items-start">
+<!-- Left Navigation Sidebar -->
+<aside class="w-full md:w-52 shrink-0 flex flex-col gap-1">
+<button class="profile-tab flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg font-label-md text-label-md transition-colors bg-secondary-container text-primary-container font-semibold w-full text-left" data-tab="activity">
+<span class="material-symbols-outlined text-[20px]">person</span>
+<span class="">내 활동</span>
+</button>
+<button class="profile-tab flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg font-label-md text-label-md transition-colors text-secondary hover:bg-surface-container-low hover:text-on-surface w-full text-left" data-tab="posts">
+<span class="material-symbols-outlined text-[20px]">description</span>
+<span class="">내 게시글</span>
+</button>
+<button class="profile-tab flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg font-label-md text-label-md transition-colors text-secondary hover:bg-surface-container-low hover:text-on-surface w-full text-left" data-tab="comments">
+<span class="material-symbols-outlined text-[20px]">chat_bubble_outline</span>
+<span class="">내 댓글</span>
+</button>
+<button class="profile-tab flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg font-label-md text-label-md transition-colors text-secondary hover:bg-surface-container-low hover:text-on-surface w-full text-left" data-tab="likes">
+<span class="material-symbols-outlined text-[20px]">favorite_border</span>
+<span class="">좋아요한 글</span>
+</button>
+<button class="profile-tab flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg font-label-md text-label-md transition-colors text-secondary hover:bg-surface-container-low hover:text-on-surface w-full text-left" data-tab="settings">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="">설정</span>
+</button>
+<!-- Activity Summary Mini Box -->
+<div class="mt-4 p-4 rounded-xl bg-surface-container-low flex flex-col gap-2">
+<span class="font-label-sm text-label-sm text-secondary font-semibold">이번 주 개발 열정도</span>
+<div class="w-full bg-surface-container rounded-full h-2 overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 78%"></div>
+</div>
+<div class="flex justify-between items-center text-secondary font-label-sm text-label-sm mt-1">
+<span class="">연속 활동</span>
+<span class="font-semibold text-primary">14일 달성</span>
+</div>
+</div>
+</aside>
+<!-- Right Content Area: Posts List -->
+<section class="flex-1 w-full min-w-0">
+<!-- Section Header -->
+<div class="flex items-center justify-between pb-3 mb-4">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">내 게시글</h2>
+<span class="font-label-md text-label-md px-2 py-0.5 rounded bg-surface-container text-secondary font-medium">3</span>
+</div>
+<!-- Filter / Sort mini controls -->
+<div class="flex items-center gap-2">
+<button class="font-label-sm text-label-sm text-primary font-semibold px-2 py-1 rounded bg-secondary-container" type="button">최신순</button>
+<button class="font-label-sm text-label-sm text-secondary hover:text-on-surface px-2 py-1 rounded transition-colors" type="button">인기순</button>
+</div>
+</div>
+<!-- Posts Listing -->
+<div class="flex flex-col gap-3">
+<!-- Post Item 1 -->
+<article class="p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer group shadow-sm">
+<div class="flex items-center justify-between gap-4">
+<div class="flex items-center gap-3.5 min-w-0">
+<div class="w-9 h-9 rounded-full overflow-hidden shrink-0 bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Digital developer avatar character headshot circle icon with dark hair and blue shirt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALAxrs6PTHJ1w9PVNdEehH6Y8RGq26t7g4GUqGLArKku82xNunG2EXr-iJ6mt8X0j_kpf9O3joa1w9omMrtLgexqtMMwvLTHmlBPczjEBdgqZdSo4jJAl383M0nEv6nBIDCoOSr5j8x4P5SEMSjeYxwdnINJD_nmahvqQx7oHXi_-moKSfSm-KjZrqCka6WITxVLMIS3SxfJYErM_PWyRYA1rPYypKQ_ITffU1MGbhqdWsrsrGRKTr">
+</div>
+<div class="min-w-0 flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate group-hover:text-primary transition-colors">
+                        AWS로 3-Tier 아키텍처 구축해본 후기
+                      </h3>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="font-label-sm text-label-sm text-secondary">2시간 전</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label-sm text-label-sm text-primary-container bg-surface-container-high px-1.5 py-0.5 rounded">인프라/클라우드</span>
+</div>
+</div>
+</div>
+<!-- Post Stats -->
+<div class="flex items-center gap-4 shrink-0 text-secondary">
+<button class="flex items-center gap-1 font-label-md text-label-md hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+<span class="">24</span>
+</button>
+<div class="flex items-center gap-1 font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">chat_bubble_outline</span>
+<span class="">5</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Post Item 2 -->
+<article class="p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer group shadow-sm">
+<div class="flex items-center justify-between gap-4">
+<div class="flex items-center gap-3.5 min-w-0">
+<div class="w-9 h-9 rounded-full overflow-hidden shrink-0 bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Developer character profile avatar badge showing coder face with dark hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzc8SQ31XCDSZRaaqAs27G2LIYPpLBrq1qcZLWjP5pwEsSnz3xe8rsQkoXiN2YNF37AByDB7_mUbggrJJm_3GIjujQx3sy3CwFi97lmYSf33qriK3whf73VOwb3lYREoit0obHx5MKZA3GVf7QxGxUQmsnH5U5qqoiL1mqoFq_50Cmk-lC1wKKJWslAjNp9wykKQzY-Hqwa5b4W583U9qxme8kJxwBCdX0C7TacsLuVlk73WKTluab">
+</div>
+<div class="min-w-0 flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate group-hover:text-primary transition-colors">
+                        클라우드 보안 설정 가이드
+                      </h3>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="font-label-sm text-label-sm text-secondary">3일 전</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label-sm text-label-sm text-primary-container bg-surface-container-high px-1.5 py-0.5 rounded">보안</span>
+</div>
+</div>
+</div>
+<!-- Post Stats -->
+<div class="flex items-center gap-4 shrink-0 text-secondary">
+<button class="flex items-center gap-1 font-label-md text-label-md hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+<span class="">18</span>
+</button>
+<div class="flex items-center gap-1 font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">chat_bubble_outline</span>
+<span class="">4</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Post Item 3 -->
+<article class="p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer group shadow-sm">
+<div class="flex items-center justify-between gap-4">
+<div class="flex items-center gap-3.5 min-w-0">
+<div class="w-9 h-9 rounded-full overflow-hidden shrink-0 bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Minimalist programmer illustration avatar icon in circle container" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARqfZuHMyN-2h2Oj8kQxGQEv1AbhjvyekIczRgaCXZ-dC6XNIWipSM2Ta58KF8DWXXApfcOm-3frZgEF9krOIipCpxO_9qHm1a87XrfWbgv1sYbn1PnUbpdjKMeE_HAwBaC7bzLsp0Uan3f2Nr7VE7Q5aqBN7Dw44bDznjfweNncVocMBfCmGEF-_YA58qkwIg1a6yFlZtizGkQmSm4ihajuLnLOsNhFFg9qtRY3hvWBvd_6ivg_lt">
+</div>
+<div class="min-w-0 flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate group-hover:text-primary transition-colors">
+                        개발 환경 세팅 정리
+                      </h3>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="font-label-sm text-label-sm text-secondary">1주 전</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label-sm text-label-sm text-primary-container bg-surface-container-high px-1.5 py-0.5 rounded">개발 일반</span>
+</div>
+</div>
+</div>
+<!-- Post Stats -->
+<div class="flex items-center gap-4 shrink-0 text-secondary">
+<button class="flex items-center gap-1 font-label-md text-label-md hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+<span class="">12</span>
+</button>
+<div class="flex items-center gap-1 font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">chat_bubble_outline</span>
+<span class="">3</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- View More Button -->
+<div class="mt-6 flex justify-center">
+<button class="px-5 py-2 rounded-lg bg-surface-container text-secondary hover:text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md flex items-center gap-1.5" type="button">
+<span class="">더 많은 게시글 보기</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</div>
+</section>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Tab switching interaction
+  const tabs = document.querySelectorAll('.profile-tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => {
+        t.classList.remove('bg-secondary-container', 'text-primary-container', 'font-semibold');
+        t.classList.add('text-secondary');
+      });
+      tab.classList.remove('text-secondary');
+      tab.classList.add('bg-secondary-container', 'text-primary-container', 'font-semibold');
+    });
+  });
+
+  // Profile edit toast feedback
+  const editBtn = document.getElementById('edit-profile-btn');
+  if (editBtn) {
+    editBtn.addEventListener('click', () => {
+      editBtn.classList.add('scale-95');
+      setTimeout(() => editBtn.classList.remove('scale-95'), 150);
+    });
+  }
+</script></main><footer class="w-full bg-[#0F172A] text-slate-400 py-10 mt-auto"><div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 font-body-sm text-body-sm"><div><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzP4pM-cIyxF3PE0jY3RQ3OulLPk8Pt4Pr_KC74fJ2pH3xqXU_r6ksapgXZuOXXMnoe_oHoF6FYqihj33xieehACaOoe2JfETa1RQ67AgDIctM1K1AZyz56DL5exIKNFo7T4Q1HauIVo3tJWdV0S-OALAaghuOzIud4gxWkTgBjpgM2H1qM8y36EhDAF2jMuReGXXqqqMehQq5mkPPhfm5JeyHaz111SlzLBS5v39yd8caanSEOOGhXuMdJYNBpRwIwQ" alt="난기류" class="h-7 w-auto object-contain"><span class="text-slate-500">개발자를 위한 지식 공유 및 성장 커뮤니티</span></div></div><div class="flex items-center gap-6 text-slate-400"><a class="hover:text-white transition-colors" href="#">이용약관</a><a class="hover:text-white transition-colors" href="#">개인정보처리방침</a><a class="hover:text-white transition-colors" href="#">고객지원</a></div></div></footer>
+
+
+
+
+
+
+
+
+
+</body></html>

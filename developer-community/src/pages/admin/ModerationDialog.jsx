@@ -1,0 +1,7 @@
+import { useEffect, useRef, useState } from 'react';
+import { X, AlertTriangle } from 'lucide-react';
+export default function ModerationDialog({target,kind,busy,error,onCancel,onConfirm}){
+  const dialog=useRef(null),[reason,setReason]=useState('');
+  useEffect(()=>{const element=dialog.current;element.showModal();return()=>element.close();},[]);
+  return <dialog ref={dialog} className="moderation-dialog" aria-labelledby="delete-title" aria-describedby="delete-desc" onCancel={e=>{e.preventDefault();if(!busy)onCancel();}}><div className="dialog-heading"><span className="danger"><AlertTriangle size={24}/></span><h2 id="delete-title">{kind==='posts'?'게시글':'댓글'} 삭제</h2><button aria-label="삭제 취소" disabled={busy} onClick={onCancel}><X size={19}/></button></div><p id="delete-desc" className="muted">{kind==='posts'?'게시글과 연결된 댓글을 삭제합니다.':'선택한 댓글을 삭제합니다.'} 삭제한 내용은 이 화면에서 복구할 수 없습니다.</p><div className="delete-target">{target.title||target.content}</div><form onSubmit={e=>{e.preventDefault();onConfirm(reason.trim());}}><label>삭제 사유<textarea required minLength={2} maxLength={300} rows={3} value={reason} onChange={e=>setReason(e.target.value)} placeholder="커뮤니티 운영 기준에 따른 삭제 사유를 적어주세요."/></label><small className="muted">2~300자 · 처리 사유를 기록합니다.</small>{error&&<p className="error" role="alert">{error}</p>}<div className="dialog-actions"><button type="button" disabled={busy} onClick={onCancel}>취소</button><button className="danger-filled" disabled={busy||reason.trim().length<2}>{busy?'삭제 중...':'삭제 확인'}</button></div></form></dialog>;
+}

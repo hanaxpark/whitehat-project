@@ -1,0 +1,359 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "tertiary": "#005b7c",
+        "surface-container-high": "#dce9ff",
+        "on-error-container": "#93000a",
+        "on-error": "#ffffff",
+        "secondary-container": "#dae2fd",
+        "on-primary-fixed-variant": "#003ea8",
+        "on-secondary-container": "#5c647a",
+        "on-primary": "#ffffff",
+        "surface-container-low": "#eff4ff",
+        "tertiary-fixed-dim": "#7bd0ff",
+        "on-secondary-fixed": "#131b2e",
+        "surface-variant": "#d3e4fe",
+        "on-background": "#0b1c30",
+        "on-primary-fixed": "#00174b",
+        "error-container": "#ffdad6",
+        "primary-fixed-dim": "#b4c5ff",
+        "on-surface-variant": "#434655",
+        "surface-container": "#e5eeff",
+        "on-tertiary-container": "#e1f2ff",
+        "on-surface": "#0b1c30",
+        "surface-container-lowest": "#ffffff",
+        "primary-container": "#2563eb",
+        "primary": "#004ac6",
+        "primary-fixed": "#dbe1ff",
+        "on-tertiary-fixed-variant": "#004c69",
+        "secondary-fixed": "#dae2fd",
+        "outline": "#737686",
+        "secondary-fixed-dim": "#bec6e0",
+        "inverse-surface": "#213145",
+        "on-tertiary": "#ffffff",
+        "secondary": "#565e74",
+        "on-secondary-fixed-variant": "#3f465c",
+        "on-tertiary-fixed": "#001e2c",
+        "on-secondary": "#ffffff",
+        "outline-variant": "#c3c6d7",
+        "surface-bright": "#f8f9ff",
+        "tertiary-container": "#00759f",
+        "on-primary-container": "#eeefff",
+        "error": "#ba1a1a",
+        "tertiary-fixed": "#c4e7ff",
+        "surface-tint": "#0053db",
+        "inverse-on-surface": "#eaf1ff",
+        "surface": "#f8f9ff",
+        "inverse-primary": "#b4c5ff",
+        "background": "#f8f9ff",
+        "surface-container-highest": "#d3e4fe",
+        "surface-dim": "#cbdbf5"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.125rem",
+        "lg": "0.25rem",
+        "xl": "0.5rem",
+        "full": "0.75rem"
+      },
+      "spacing": {
+        "margin": "2rem",
+        "space-xs": "0.25rem",
+        "space-lg": "1.5rem",
+        "margin-mobile": "1rem",
+        "space-md": "1rem",
+        "space-xl": "2rem",
+        "space-sm": "0.5rem",
+        "gutter": "1.5rem",
+        "gutter-mobile": "0.75rem"
+      },
+      "fontFamily": {
+        "code-snippet": ["Inter"],
+        "body-sm": ["Inter"],
+        "display-hero-mobile": ["Inter"],
+        "headline-lg": ["Inter"],
+        "label-sm": ["Inter"],
+        "headline-md": ["Inter"],
+        "body-lg": ["Inter"],
+        "body-md": ["Inter"],
+        "display-hero": ["Inter"],
+        "label-md": ["Inter"],
+        "headline-sm": ["Inter"]
+      },
+      "fontSize": {
+        "code-snippet": ["13px", {"lineHeight": "20px", "fontWeight": "400"}],
+        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+        "display-hero-mobile": ["26px", {"lineHeight": "36px", "fontWeight": "700"}],
+        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+        "body-lg": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+        "body-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+        "display-hero": ["36px", {"lineHeight": "48px", "fontWeight": "800"}],
+        "label-md": ["13px", {"lineHeight": "16px", "fontWeight": "500"}],
+        "headline-sm": ["16px", {"lineHeight": "24px", "fontWeight": "600"}]
+      }
+    }
+  }
+}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-[#0F172A] shadow-[0_1px_8px_rgba(0,0,0,0.15)]"><div class="h-16 max-w-7xl mx-auto px-6 flex items-center justify-between gap-4"><div class="flex items-center gap-6"><a class="flex items-center gap-3" data-path="main-page" href="#"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHD-PYgdOHzDYqoi0nOqAWcYUHBixXXJ-AVzIRy188SfiX2K2BqNF6pLD-ypbzDv_-nTMGZcPtREBkWm7konrRC4ndC3tatG5yGTFl9QABY0cqiTwsZk9yN-SZ4LP24P3-GzYJKTT7fFHpMalIijGmMIKM0EWL3ZUG7fiJqBItHDz2Z9RIsuwADCxiwZxbHduvFidM368rWjOgosrMxoehy1XWWbzJw5NjcsZjRLfs-otxDPmt0WKEnSSZY9cEq1l8TA" alt="난기류" class="h-9 w-auto object-contain"></a><nav class="hidden lg:flex items-center gap-6" data-active-classes="text-white font-bold"><a class="font-label-md text-label-md text-slate-400 hover:text-white transition-colors" data-path="posts-list" href="#">커뮤니티</a><a aria-current="page" class="transition-colors text-white font-bold" data-path="post-write" href="#">Q&amp;A</a><a class="font-label-md text-label-md text-slate-400 hover:text-white transition-colors" data-path="my-page" href="#">기술블로그</a></nav></div><div class="flex-1 max-w-[480px] hidden md:block"><div class="relative flex items-center w-full"><span class="material-symbols-outlined absolute left-3.5 text-slate-400 text-[20px] pointer-events-none">search</span><input class="w-full h-10 pl-10 pr-4 bg-[#1E293B] border border-slate-700/60 rounded-xl text-white placeholder-slate-400 font-body-sm text-body-sm focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" placeholder="게시글, 태그, 사용자 검색..." type="text"></div></div><div class="flex items-center gap-3"><a class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md rounded-lg transition-colors shadow-sm" data-path="post-write" href="#"><span class="material-symbols-outlined text-[18px]">edit_square</span><span class="">글쓰기</span></a><button class="p-2 text-slate-400 hover:text-white rounded-lg transition-colors relative" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary-container"></span></button><a class="flex items-center" data-path="my-page" href="#"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></a></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-140px)]"><div class="flex flex-col w-full">
+<!-- Top Subtle Background / Accent Banner -->
+<div class="w-full bg-surface-container-low py-6 md:py-10 px-4 flex items-center justify-center">
+<div class="w-full max-w-[820px] flex flex-col gap-1">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<a class="hover:text-primary transition-colors flex items-center gap-1" data-path="posts-list" href="#">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+<span class="">커뮤니티 목록으로 돌아가기</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Main Card Container Area -->
+<div class="w-full px-4 -mt-4 pb-16 flex justify-center">
+<div class="w-full max-w-[820px] bg-surface-container-lowest rounded-xl shadow-sm p-6 sm:p-10 flex flex-col gap-8">
+<!-- Header -->
+<div class="flex flex-col gap-1 pb-2">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">새로운 게시글 작성</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          개발 경험, 기술적인 의문점, 프로젝트 피드백을 자유롭게 공유해 보세요.
+        </p>
+</div>
+<!-- Form Body -->
+<form class="flex flex-col gap-6" id="post-create-form" onsubmit="event.preventDefault();">
+<!-- 1. 제목 (Title) -->
+<div class="flex flex-col gap-2">
+<label class="font-headline-sm text-headline-sm text-on-surface flex items-center justify-between" for="post-title">
+<span class="">제목</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-normal">필수</span>
+</label>
+<input class="w-full h-11 px-4 bg-surface-container-lowest text-on-surface placeholder:text-outline-variant font-body-md text-body-md rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary transition-all" id="post-title" name="title" placeholder="제목을 입력하세요" required="" type="text">
+</div>
+<!-- 2. 카테고리 (Category) -->
+<div class="flex flex-col gap-2">
+<label class="font-headline-sm text-headline-sm text-on-surface flex items-center justify-between" for="post-category">
+<span class="">카테고리</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-normal">필수</span>
+</label>
+<div class="relative w-full">
+<select class="w-full h-11 pl-4 pr-10 appearance-none bg-surface-container-lowest text-on-surface font-body-md text-body-md rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer transition-all" id="post-category" name="category" required="">
+<option disabled="" hidden="" selected="" value="">카테고리를 선택하세요</option>
+<option value="general">개발 일반</option>
+<option value="frontend">프론트엔드</option>
+<option value="backend">백엔드</option>
+<option value="infra">인프라 / 클라우드</option>
+<option value="security">보안</option>
+<option value="study">스터디 / 모임</option>
+<option value="free">자유 게시판</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-[20px]">
+              expand_more
+            </span>
+</div>
+</div>
+<!-- 3. 내용 및 서식 툴바 (Content & Formatting Toolbar) -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<label class="font-headline-sm text-headline-sm text-on-surface" for="editor-content">내용</label>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Markdown 지원</span>
+</div>
+<div class="rounded-lg shadow-sm bg-surface-container-lowest overflow-hidden focus-within:ring-2 focus-within:ring-primary transition-all">
+<!-- Format Toolbar -->
+<div class="bg-surface-container-low px-3 py-2 flex items-center flex-wrap gap-1">
+<button class="w-8 h-8 flex items-center justify-center rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors" onclick="applyFormat('bold')" title="굵게 (Ctrl+B)" type="button">
+<span class="material-symbols-outlined text-[19px] font-bold">format_bold</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors" onclick="applyFormat('italic')" title="기울임꼴 (Ctrl+I)" type="button">
+<span class="material-symbols-outlined text-[19px]">format_italic</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors" onclick="applyFormat('strike')" title="취소선" type="button">
+<span class="material-symbols-outlined text-[19px]">format_strikethrough</span>
+</button>
+<div class="h-4 w-px bg-outline-variant/60 mx-1"></div>
+<button class="w-8 h-8 flex items-center justify-center rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors" onclick="applyFormat('bullet-list')" title="글머리 기호 목록" type="button">
+<span class="material-symbols-outlined text-[19px]">format_list_bulleted</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors" onclick="applyFormat('numbered-list')" title="번호 매기기 목록" type="button">
+<span class="material-symbols-outlined text-[19px]">format_list_numbered</span>
+</button>
+<div class="h-4 w-px bg-outline-variant/60 mx-1"></div>
+<button class="w-8 h-8 flex items-center justify-center rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors" onclick="applyFormat('link')" title="링크 삽입" type="button">
+<span class="material-symbols-outlined text-[19px]">link</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors" onclick="document.getElementById('file-input').click()" title="이미지 추가" type="button">
+<span class="material-symbols-outlined text-[19px]">add_photo_alternate</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-colors" onclick="applyFormat('code-block')" title="코드 블록" type="button">
+<span class="material-symbols-outlined text-[19px]">code</span>
+</button>
+</div>
+<!-- Text Area -->
+<textarea class="w-full p-4 bg-transparent text-on-surface placeholder:text-outline-variant font-body-md text-body-md focus:outline-none resize-y min-h-[180px] leading-relaxed" id="editor-content" name="content" placeholder="내용을 작성하세요...
+코드나 이미지를 첨부할 수 있습니다." required="" rows="8"></textarea>
+</div>
+</div>
+<!-- 4. 이미지 첨부 (Image Drag & Drop Area) -->
+<div class="flex flex-col gap-2">
+<label class="font-headline-sm text-headline-sm text-on-surface flex items-center justify-between">
+<span class="">이미지 첨부</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant" id="upload-status">최대 10MB</span>
+</label>
+<input accept="image/png, image/jpeg, image/gif, image/webp" class="hidden" id="file-input" multiple="" onchange="handleFilesSelected(this.files)" type="file">
+<div class="w-full bg-surface-container-low hover:bg-surface-container/60 rounded-xl p-8 flex flex-col items-center justify-center gap-3 cursor-pointer transition-all duration-200 group text-center" id="drop-zone" onclick="document.getElementById('file-input').click()">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-outline group-hover:text-primary group-hover:scale-105 transition-all">
+<span class="material-symbols-outlined text-[28px]">image</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<p class="font-body-md text-body-md text-on-surface font-medium">
+                이미지를 드래그하거나 클릭하여 업로드
+              </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                (JPG, PNG, GIF / 최대 10MB)
+              </p>
+</div>
+</div>
+<!-- Uploaded Items Preview Container -->
+<div class="hidden grid-cols-2 sm:grid-cols-4 gap-3 pt-2" id="preview-list"></div>
+</div>
+<!-- 5. 하단 버튼 바 (Footer Action Bar) -->
+<div class="flex items-center justify-between pt-4 mt-2">
+<button class="h-10 px-6 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md transition-colors" onclick="window.history.back()" type="button">
+            취소
+          </button>
+<button class="h-10 px-8 rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md transition-all shadow-sm flex items-center gap-2" id="submit-btn" type="submit">
+<span class="material-symbols-outlined text-[18px]">send</span>
+<span class="">등록하기</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<script>
+  // Simple Editor helpers
+  function applyFormat(type) {
+    const textarea = document.getElementById('editor-content');
+    if (!textarea) return;
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const selected = textarea.value.substring(start, end);
+    let replacement = '';
+
+    switch (type) {
+      case 'bold':
+        replacement = `**${selected || '굵은 텍스트'}**`;
+        break;
+      case 'italic':
+        replacement = `*${selected || '기울임 텍스트'}*`;
+        break;
+      case 'strike':
+        replacement = `~~${selected || '취소선 텍스트'}~~`;
+        break;
+      case 'bullet-list':
+        replacement = `\n- ${selected || '목록 항목'}`;
+        break;
+      case 'numbered-list':
+        replacement = `\n1. ${selected || '목록 항목'}`;
+        break;
+      case 'link':
+        replacement = `[${selected || '링크 제목'}](https://example.com)`;
+        break;
+      case 'code-block':
+        replacement = `\n\`\`\`javascript\n${selected || '// 코드 작성'}\n\`\`\`\n`;
+        break;
+    }
+
+    textarea.setRangeText(replacement, start, end, 'end');
+    textarea.focus();
+  }
+
+  // Drag and Drop & Upload Preview
+  const dropZone = document.getElementById('drop-zone');
+  const previewList = document.getElementById('preview-list');
+  const uploadStatus = document.getElementById('upload-status');
+
+  if (dropZone) {
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropZone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropZone.classList.add('bg-surface-container-high');
+      }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropZone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropZone.classList.remove('bg-surface-container-high');
+      }, false);
+    });
+
+    dropZone.addEventListener('drop', (e) => {
+      const dt = e.dataTransfer;
+      const files = dt.files;
+      handleFilesSelected(files);
+    }, false);
+  }
+
+  function handleFilesSelected(files) {
+    if (!files || files.length === 0) return;
+    previewList.classList.remove('hidden');
+    previewList.classList.add('grid');
+
+    Array.from(files).forEach(file => {
+      if (!file.type.startsWith('image/')) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const item = document.createElement('div');
+        item.className = 'relative group rounded-lg overflow-hidden bg-surface-container aspect-video shadow-sm';
+        item.innerHTML = `
+          <img src="${e.target.result}" alt="${file.name}" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-on-surface/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <button type="button" class="p-1 rounded-full bg-error text-on-error hover:scale-110 transition-transform" onclick="this.closest('.relative').remove()">
+              <span class="material-symbols-outlined text-[16px] block">close</span>
+            </button>
+          </div>
+          <span class="absolute bottom-1 left-1.5 right-1.5 text-[10px] text-white bg-on-surface/60 px-1 py-0.5 rounded truncate">${file.name}</span>
+        `;
+        previewList.appendChild(item);
+      };
+      reader.readAsDataURL(file);
+    });
+
+    if (uploadStatus) {
+      uploadStatus.textContent = `${previewList.children.length + files.length}개 파일 첨부됨`;
+    }
+  }
+
+  // Submit Feedback Mock
+  const form = document.getElementById('post-create-form');
+  if (form) {
+    form.addEventListener('submit', function() {
+      const title = document.getElementById('post-title').value;
+      const category = document.getElementById('post-category').value;
+      if (!title || !category) return;
+      
+      const submitBtn = document.getElementById('submit-btn');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <span class="material-symbols-outlined text-[18px] animate-spin">progress_activity</span>
+        <span>등록 중...</span>
+      `;
+
+      setTimeout(() => {
+        alert('게시글이 성공적으로 등록되었습니다.');
+        window.location.href = '#';
+      }, 700);
+    });
+  }
+</script></main><footer class="w-full bg-[#0F172A] text-slate-400 py-10 mt-auto"><div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 font-body-sm text-body-sm"><div><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUJqEP-IuKyqbGQIxoQim2DMpSREnCC-UygIb5bG3DMsYqFXOxm6RTmbc1O932tkblyvkoQ6SmUpKTxEZQZ8HEqVc79hIRd3inRDESmS2vfO_nQHg_3XzPTX4x7n-Sq0gQcz3By-nL1cn4XZ4qTZ4ZdOQ7x970KmcE2akZJYZHJRM8YQdi68jMKhY0rhMSooL4-d2B1YOfPrzXlohfKhPj4U6rqV3pcoPsaD3YYvsNSPSgaZsn-KGjeHhISB6GwTtIfA" alt="난기류" class="h-7 w-auto object-contain"><span class="ml-3 text-slate-500">개발자를 위한 지식 공유 및 성장 커뮤니티</span></div><div class="flex items-center gap-6 text-slate-400"><a class="hover:text-white transition-colors" href="#">이용약관</a><a class="hover:text-white transition-colors" href="#">개인정보처리방침</a><a class="hover:text-white transition-colors" href="#">고객지원</a></div></div></footer>
+
+
+
+
+
+
+
+</body></html>

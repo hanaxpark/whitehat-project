@@ -3,7 +3,12 @@ const TOKEN = 'nangiryu-token';
 // 백엔드가 JWT를 응답 본문으로 주고 Authorization: Bearer로만 검증한다. remember면 localStorage, 아니면 탭이 닫히면 사라지는 sessionStorage.
 export const getToken = () => { try { return localStorage.getItem(TOKEN) || sessionStorage.getItem(TOKEN); } catch { return null; } };
 export const clearToken = () => { try { localStorage.removeItem(TOKEN); sessionStorage.removeItem(TOKEN); } catch { /* 저장소 사용 불가 */ } };
-export const setToken = (token, remember = false) => { clearToken(); try { (remember ? localStorage : sessionStorage).setItem(TOKEN, token); } catch { /* 저장소 사용 불가 */ } };
+export const setToken = (token, remember = false) => {
+  if(typeof token!=='string'||!token.trim()) throw new ApiError('로그인 응답에 유효한 token이 없습니다.',502,'INVALID_TOKEN');
+  clearToken();
+  try { (remember ? localStorage : sessionStorage).setItem(TOKEN, token); }
+  catch { throw new ApiError('로그인 정보를 저장할 수 없습니다. 브라우저 저장소 설정을 확인해주세요.',0,'TOKEN_STORAGE'); }
+};
 export async function request(path, { method = 'GET', body, signal } = {}) {
   if (!/^\/api\/(auth|users|posts|comments)(\/|\?|$)/.test(path)) throw new Error('허용된 상대경로 API만 사용할 수 있습니다.');
   const controller = new AbortController();

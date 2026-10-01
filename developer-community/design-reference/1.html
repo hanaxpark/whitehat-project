@@ -1,0 +1,359 @@
+<!DOCTYPE html><html lang="ko" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "tertiary": "#005b7c",
+        "surface-container-high": "#dce9ff",
+        "on-error-container": "#93000a",
+        "on-error": "#ffffff",
+        "secondary-container": "#dae2fd",
+        "on-primary-fixed-variant": "#003ea8",
+        "on-secondary-container": "#5c647a",
+        "on-primary": "#ffffff",
+        "surface-container-low": "#eff4ff",
+        "tertiary-fixed-dim": "#7bd0ff",
+        "on-secondary-fixed": "#131b2e",
+        "surface-variant": "#d3e4fe",
+        "on-background": "#0b1c30",
+        "on-primary-fixed": "#00174b",
+        "error-container": "#ffdad6",
+        "primary-fixed-dim": "#b4c5ff",
+        "on-surface-variant": "#434655",
+        "surface-container": "#e5eeff",
+        "on-tertiary-container": "#e1f2ff",
+        "on-surface": "#0b1c30",
+        "surface-container-lowest": "#ffffff",
+        "primary-container": "#2563eb",
+        "primary": "#004ac6",
+        "primary-fixed": "#dbe1ff",
+        "on-tertiary-fixed-variant": "#004c69",
+        "secondary-fixed": "#dae2fd",
+        "outline": "#737686",
+        "secondary-fixed-dim": "#bec6e0",
+        "inverse-surface": "#213145",
+        "on-tertiary": "#ffffff",
+        "secondary": "#565e74",
+        "on-secondary-fixed-variant": "#3f465c",
+        "on-tertiary-fixed": "#001e2c",
+        "on-secondary": "#ffffff",
+        "outline-variant": "#c3c6d7",
+        "surface-bright": "#f8f9ff",
+        "tertiary-container": "#00759f",
+        "on-primary-container": "#eeefff",
+        "error": "#ba1a1a",
+        "tertiary-fixed": "#c4e7ff",
+        "surface-tint": "#0053db",
+        "inverse-on-surface": "#eaf1ff",
+        "surface": "#f8f9ff",
+        "inverse-primary": "#b4c5ff",
+        "background": "#f8f9ff",
+        "surface-container-highest": "#d3e4fe",
+        "surface-dim": "#cbdbf5"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.125rem",
+        "lg": "0.25rem",
+        "xl": "0.5rem",
+        "full": "0.75rem"
+      },
+      "spacing": {
+        "margin": "2rem",
+        "space-xs": "0.25rem",
+        "space-lg": "1.5rem",
+        "margin-mobile": "1rem",
+        "space-md": "1rem",
+        "space-xl": "2rem",
+        "space-sm": "0.5rem",
+        "gutter": "1.5rem",
+        "gutter-mobile": "0.75rem"
+      },
+      "fontFamily": {
+        "code-snippet": ["Inter"],
+        "body-sm": ["Inter"],
+        "display-hero-mobile": ["Inter"],
+        "headline-lg": ["Inter"],
+        "label-sm": ["Inter"],
+        "headline-md": ["Inter"],
+        "body-lg": ["Inter"],
+        "body-md": ["Inter"],
+        "display-hero": ["Inter"],
+        "label-md": ["Inter"],
+        "headline-sm": ["Inter"]
+      },
+      "fontSize": {
+        "code-snippet": ["13px", {"lineHeight": "20px", "fontWeight": "400"}],
+        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+        "display-hero-mobile": ["26px", {"lineHeight": "36px", "fontWeight": "700"}],
+        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+        "body-lg": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+        "body-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+        "display-hero": ["36px", {"lineHeight": "48px", "fontWeight": "800"}],
+        "label-md": ["13px", {"lineHeight": "16px", "fontWeight": "500"}],
+        "headline-sm": ["16px", {"lineHeight": "24px", "fontWeight": "600"}]
+      }
+    }
+  }
+}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-[#0F172A] shadow-[0_1px_8px_rgba(0,0,0,0.15)]"><div class="h-16 max-w-7xl mx-auto px-6 flex items-center justify-between gap-4"><div class="flex items-center gap-6"><a class="flex items-center gap-3" data-path="main-page" href="#"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS5HNN7wlVvdieeEz1OxbSKMOhlSOf0nw-LyMxcFla_iFqnbT8Ia01lhtZZ40nHAI8LHymjvPj6PjxXcw2vvMEC8fqt_gN3wvIOD3jI4G_08owjX399od9LJkDEWypx605tH7Ql6--GrI2IS107ZkD7fZjfeLVpd-mo_dOx1ZB8xUrEJMKmVRVDRgNZb6HByqqemvrDj6f-Cw9dnFOt0JvFYloUp0USqdT3ZS-cfyh3nwarFuJnztjhK6w0ZwOq_UI4Q" alt="난기류" class="h-9 w-auto object-contain"></a><nav class="hidden lg:flex items-center gap-6" data-active-classes="text-white font-bold"><a class="font-label-md text-label-md text-slate-400 hover:text-white transition-colors" data-path="posts-list" href="#">커뮤니티</a><a class="font-label-md text-label-md text-slate-400 hover:text-white transition-colors" data-path="post-write" href="#">Q&amp;A</a><a class="font-label-md text-label-md text-slate-400 hover:text-white transition-colors" data-path="my-page" href="#">기술블로그</a></nav></div><div class="flex-1 max-w-[480px] hidden md:block"><div class="relative flex items-center w-full"><span class="material-symbols-outlined absolute left-3.5 text-slate-400 text-[20px] pointer-events-none">search</span><input class="w-full h-10 pl-10 pr-4 bg-[#1E293B] border border-slate-700/60 rounded-xl text-white placeholder-slate-400 font-body-sm text-body-sm focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" placeholder="게시글, 태그, 사용자 검색..." type="text"></div></div><div class="flex items-center gap-3"><a class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md rounded-lg transition-colors shadow-sm" data-path="post-write" href="#"><span class="material-symbols-outlined text-[18px]">edit_square</span><span class="">글쓰기</span></a><button class="p-2 text-slate-400 hover:text-white rounded-lg transition-colors relative" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary-container"></span></button><a class="flex items-center" data-path="my-page" href="#"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></a></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-140px)]"><div class="flex flex-col w-full">
+<div class="max-w-[1100px] w-full mx-auto px-4 sm:px-6 py-8 sm:py-12 flex flex-col gap-8">
+<!-- Hero Banner Card -->
+<section class="w-full relative overflow-hidden rounded-2xl bg-gradient-to-br from-surface-container-low via-surface-container-lowest to-surface-container-high shadow-sm p-6 sm:p-10 lg:p-12">
+<!-- Decorative ambient blurs -->
+<div class="absolute -top-16 -right-16 w-80 h-80 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-16 left-1/3 w-64 h-64 rounded-full bg-tertiary-fixed-dim/20 blur-2xl pointer-events-none"></div>
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<!-- Left Text Copy & Action -->
+<div class="lg:col-span-7 flex flex-col items-start space-y-5">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container/60 text-primary font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="">개발자 지식 교류 플랫폼 난기류</span>
+</div>
+<h1 class="font-display-hero text-display-hero text-on-surface tracking-tight leading-tight">
+            개발하는 모든 사람들을 위한 공간<br>
+<span class="text-primary-container">함께 배우고, 질문하고, 성장하세요.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl leading-relaxed">
+            개발 관련 질문, 팁, 프로젝트 공유까지<br class="hidden sm:inline">
+            개발자들의 생생한 기술 이야기가 모이는 커뮤니티입니다.
+          </p>
+<div class="pt-2 flex flex-wrap items-center gap-3">
+<a class="inline-flex items-center gap-2 px-6 py-3 bg-primary-container hover:bg-primary text-on-primary font-headline-sm text-headline-sm rounded-xl transition-all shadow-md hover:shadow-lg active:scale-95 group" data-path="posts-list" href="#">
+<span class="">지금 시작하기</span>
+<span class="material-symbols-outlined text-body-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+<a class="inline-flex items-center gap-2 px-5 py-3 bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md rounded-xl transition-colors" data-path="post-write" href="#">
+<span class="material-symbols-outlined text-[18px] text-primary-container">rate_review</span>
+<span class="">게시글 둘러보기</span>
+</a>
+</div>
+</div>
+<!-- Right Illustration Area -->
+<div class="lg:col-span-5 flex justify-center items-center relative">
+<div class="relative w-full max-w-[380px] aspect-[4/3] flex items-center justify-center">
+<!-- Graphic Composition: Tech Workspace & Developer -->
+<div class="w-full h-full bg-gradient-to-b from-surface-container-lowest to-surface-container rounded-2xl shadow-md p-5 flex flex-col justify-between relative overflow-hidden">
+<!-- Floating Code Badge Top-Left -->
+<div class="absolute top-3 left-3 bg-[#0F172A] text-tertiary-fixed-dim px-3 py-1.5 rounded-lg text-code-snippet font-code-snippet shadow-sm flex items-center gap-1.5 animate-bounce" style="animation-duration: 3s;">
+<span class="text-primary-fixed-dim"></span>
+<span class="text-[11px] text-white">clean_code.ts</span>
+</div>
+<!-- Floating Settings Gear Top-Right -->
+<div class="absolute top-3 right-3 w-8 h-8 rounded-lg bg-primary-container/15 flex items-center justify-center text-primary-container shadow-sm">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</div>
+<!-- Simulated Terminal / Code Editor Window -->
+<div class="mt-8 w-full bg-[#0F172A] rounded-xl p-3 shadow-inner text-white flex flex-col gap-2">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-error"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-surface-container-high"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-fixed-dim"></span>
+<span class="ml-2 font-code-snippet text-[10px] text-slate-400">난기류 Workspace</span>
+</div>
+<div class="font-code-snippet text-[11px] leading-relaxed text-slate-300">
+<span class="text-tertiary-fixed-dim">const</span> developer = {<br>
+                  &nbsp;&nbsp;learning: <span class="text-primary-fixed-dim">true</span>,<br>
+                  &nbsp;&nbsp;community: <span class="text-tertiary-fixed">'난기류'</span><br>
+                  };
+                </div>
+</div>
+<!-- Developer Character Avatar Silhouette -->
+<div class="flex items-end justify-between pt-2">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-gradient-to-tr from-primary to-primary-container flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-[28px]">terminal</span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface">함께 성장하기</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Q&amp;A · 블로그 · 네트워킹</div>
+</div>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-high px-2.5 py-1 rounded-full text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">groups</span>
+<span class="">14,200+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Popular Posts Section (인기 게시글) -->
+<section class="w-full bg-surface-container-lowest rounded-2xl shadow-sm p-6 sm:p-8 flex flex-col gap-6">
+<!-- Section Header -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-5 bg-primary-container rounded-full"></div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">인기 게시글</h2>
+</div>
+<a class="inline-flex items-center gap-1 font-label-md text-label-md text-primary-container hover:text-primary transition-colors group" data-path="posts-list" href="#">
+<span class="">전체보기</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+</a>
+</div>
+<!-- Post List Items -->
+<div class="flex flex-col gap-3.5">
+<!-- Item 1: AWS 3-Tier -->
+<article class="p-4 sm:p-5 rounded-xl bg-surface hover:bg-surface-container-low transition-all duration-150 flex flex-col sm:flex-row sm:items-center justify-between gap-4 group cursor-pointer shadow-sm" onclick="location.href='#posts-detail'">
+<div class="flex items-start sm:items-center gap-3.5 min-w-0">
+<!-- Author Avatar -->
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-primary overflow-hidden">
+<span class="material-symbols-outlined text-[24px]">account_circle</span>
+</div>
+<!-- Content Details -->
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm mb-0.5">
+<span class="font-headline-sm text-[13px] text-on-surface">cloud_dev</span>
+<span class="">·</span>
+<span class="">2시간 전</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary-container transition-colors truncate">
+                AWS로 3-Tier 아키텍처 구축해본 후기
+              </h3>
+<!-- Badges -->
+<div class="flex items-center gap-1.5 mt-2">
+<span class="px-2 py-0.5 rounded-md bg-secondary-container text-primary font-label-sm text-label-sm">#AWS</span>
+<span class="px-2 py-0.5 rounded-md bg-secondary-container text-primary font-label-sm text-label-sm">#인프라</span>
+</div>
+</div>
+</div>
+<!-- Post Metrics (Likes, Comments) -->
+<div class="flex items-center gap-4 self-end sm:self-center font-label-md text-label-md text-on-surface-variant flex-shrink-0">
+<div class="flex items-center gap-1.5 hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+<span class="">24</span>
+</div>
+<div class="flex items-center gap-1.5 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">mode_comment</span>
+<span class="">5</span>
+</div>
+</div>
+</article>
+<!-- Item 2: PHP Session -->
+<article class="p-4 sm:p-5 rounded-xl bg-surface hover:bg-surface-container-low transition-all duration-150 flex flex-col sm:flex-row sm:items-center justify-between gap-4 group cursor-pointer shadow-sm" onclick="location.href='#posts-detail'">
+<div class="flex items-start sm:items-center gap-3.5 min-w-0">
+<!-- Author Avatar -->
+<div class="w-10 h-10 rounded-full bg-secondary-container flex-shrink-0 flex items-center justify-center text-secondary overflow-hidden">
+<span class="material-symbols-outlined text-[24px]">face</span>
+</div>
+<!-- Content Details -->
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm mb-0.5">
+<span class="font-headline-sm text-[13px] text-on-surface">back_end</span>
+<span class="">·</span>
+<span class="">5시간 전</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary-container transition-colors truncate">
+                PHP에서 세션 관리는 어떻게 하나요?
+              </h3>
+<!-- Badges -->
+<div class="flex items-center gap-1.5 mt-2">
+<span class="px-2 py-0.5 rounded-md bg-secondary-container text-primary font-label-sm text-label-sm">#PHP</span>
+<span class="px-2 py-0.5 rounded-md bg-secondary-container text-primary font-label-sm text-label-sm">#보안</span>
+</div>
+</div>
+</div>
+<!-- Post Metrics (Likes, Comments) -->
+<div class="flex items-center gap-4 self-end sm:self-center font-label-md text-label-md text-on-surface-variant flex-shrink-0">
+<div class="flex items-center gap-1.5 hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+<span class="">12</span>
+</div>
+<div class="flex items-center gap-1.5 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">mode_comment</span>
+<span class="">8</span>
+</div>
+</div>
+</article>
+<!-- Item 3: Linux Security -->
+<article class="p-4 sm:p-5 rounded-xl bg-surface hover:bg-surface-container-low transition-all duration-150 flex flex-col sm:flex-row sm:items-center justify-between gap-4 group cursor-pointer shadow-sm" onclick="location.href='#posts-detail'">
+<div class="flex items-start sm:items-center gap-3.5 min-w-0">
+<!-- Author Avatar -->
+<div class="w-10 h-10 rounded-full bg-surface-variant flex-shrink-0 flex items-center justify-center text-primary-container overflow-hidden">
+<span class="material-symbols-outlined text-[24px]">support_agent</span>
+</div>
+<!-- Content Details -->
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm mb-0.5">
+<span class="font-headline-sm text-[13px] text-on-surface">linux_user</span>
+<span class="">·</span>
+<span class="">1일 전</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary-container transition-colors truncate">
+                처음하는 리눅스 서버 보안 설정 정리
+              </h3>
+<!-- Badges -->
+<div class="flex items-center gap-1.5 mt-2">
+<span class="px-2 py-0.5 rounded-md bg-secondary-container text-primary font-label-sm text-label-sm">#리눅스</span>
+<span class="px-2 py-0.5 rounded-md bg-secondary-container text-primary font-label-sm text-label-sm">#보안</span>
+</div>
+</div>
+</div>
+<!-- Post Metrics (Likes, Comments) -->
+<div class="flex items-center gap-4 self-end sm:self-center font-label-md text-label-md text-on-surface-variant flex-shrink-0">
+<div class="flex items-center gap-1.5 hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+<span class="">37</span>
+</div>
+<div class="flex items-center gap-1.5 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">mode_comment</span>
+<span class="">11</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Category Highlights Strip (Quick Nav) -->
+<section class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+<div class="p-4 rounded-xl bg-surface-container-lowest shadow-sm flex items-center gap-3 hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[22px]">code</span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface">개발 일반</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">코딩 팁 &amp; 이슈</div>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-lowest shadow-sm flex items-center gap-3 hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">layers</span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface">프론트엔드</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">React, Vue, Web</div>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-lowest shadow-sm flex items-center gap-3 hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[22px]">dns</span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface">백엔드</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">API, Server, DB</div>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-lowest shadow-sm flex items-center gap-3 hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[22px]">cloud_sync</span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface">클라우드/인프라</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">AWS, Docker, CI/CD</div>
+</div>
+</div>
+</section>
+</div>
+</div></main><footer class="w-full bg-[#0F172A] text-slate-400 py-10 mt-auto"><div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 font-body-sm text-body-sm"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEpGrrMcMfy60xQVuw_6A2w0LQBWWK9miOezXm6w1FVD-ZLCseb530wFmMwiAe2t0g7wNPKa4TCO96BWAqQN_amWGtNQtApZqLoh9zkA9MSmFwGKLoBBUaq-ItFcKoc-eN-f_WXoctM1mHiVsTtZoJD02Dmw-4darqh6VQiglO6ZweEy_s9dNu3fs6Xfq1wf33CyF5VO029QCX2XPA_P0ZvUVWrbKXu8cdlxNqq0WTpCr-2c32vWvU5HE8rPVSOFv2KQ" alt="난기류" class="h-7 w-auto object-contain"><span class="text-slate-500 text-body-sm font-body-sm">개발자를 위한 지식 공유 및 성장 커뮤니티</span></div><div class="flex items-center gap-6 text-slate-400"><a class="hover:text-white transition-colors" href="#">이용약관</a><a class="hover:text-white transition-colors" href="#">개인정보처리방침</a><a class="hover:text-white transition-colors" href="#">고객지원</a></div></div></footer>
+
+
+
+
+
+
+
+
+
+</body></html>

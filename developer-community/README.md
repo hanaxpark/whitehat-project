@@ -1,10 +1,10 @@
-# 난기류 개발자 커뮤니티 프론트엔드 스타터
+# 난기류 개발자 커뮤니티 — 원본 UI 적용 React/Vite
 
-첨부 UI ZIP의 6개 screen.png, code.html, DESIGN.md를 기준으로 만든 React + Vite + React Router 프로젝트입니다. 네이비 공통 헤더, 파란 액션 버튼, 밝은 카드, 메인 코드 패널, 카테고리 사이드바, 게시글 상세, 작성 폼, 프로필 활동 구성을 반영했습니다. 원본 외부 이미지/폰트에 의존하지 않도록 로고는 CSS 문자 마크, 프로필 커버는 CSS 그래픽, 아바타는 이니셜로 대체했습니다.
+첨부된 Stitch UI의 6개 화면과 관리자 센터 HTML을 기준으로 React 화면을 구현했습니다. 원본의 Tailwind 색상·타이포그래피 설정은 `tailwind.config.cjs`에 옮겨 빌드 시 실제 CSS로 생성합니다. 화면별 원본 HTML과 디자인 문서는 `design-reference/`에 보관했습니다. 로고와 프로필 이미지는 프로젝트에 포함해 외부 이미지 링크가 깨져도 보이게 했습니다. 팀원이 수정한 JWT/raw JSON/API 필드명 변환 코드는 `src/api/`에 유지했습니다.
 
 ## 빠른 실행
 
-Node.js 22.12 이상 (검증 환경: 24.x)을 사용하세요.
+Node.js 22.12 이상. 검증 환경은 24.14.0.
 
 ```sh
 npm ci
@@ -12,28 +12,43 @@ cp .env.example .env.local
 npm run dev
 ```
 
-PowerShell에서는 `Copy-Item .env.example .env.local`. 기본 주소는 http://localhost:5173. 기본 mock 모드에서는 백엔드가 필요 없습니다.
+PowerShell: `Copy-Item .env.example .env.local`. 기본 주소 http://localhost:5173. 기본 개발 모드는 mock이라 백엔드 없이 확인할 수 있습니다.
 
-데모 로그인: **demo@example.com / Demo1234!**. 회원가입, 로그인 유지, 로그아웃, 검색/카테고리/정렬/페이지 이동, 글 작성·수정·삭제, 댓글 작성·삭제, 좋아요 설정·해제, 프로필 수정 및 활동 조회가 작동합니다. mock 데이터는 브라우저 localStorage에 저장되며 로그인 유지 해제 시 sessionStorage를 사용합니다. 개발자 도구에서 `nangiryu-demo-v1`, `nangiryu-demo-session`을 지우면 초기화됩니다. mock 회원가입 비밀번호는 데모 동작을 위해 평문 저장되므로 실제 개인정보를 입력하지 마세요.
-
-## 화면 및 경로
-
-| 화면 | 경로 | 주요 기능 |
+| mock 계정 | 이메일 | 비밀번호 |
 |---|---|---|
-| 메인 | `/` | 히어로, 인기 게시글, 카테고리 링크 |
-| 로그인/회원가입 | `/auth` | 폼 검증, 비밀번호 표시, 로그인 후 원래 페이지 이동 |
-| 목록/카테고리 | `/posts` | `category`, `q`, `type`, `sort`, `page` query 사용 |
-| 상세/댓글/좋아요 | `/posts/:id` | Markdown 렌더, 작성자 수정/삭제, 댓글, 좋아요 |
-| 작성/수정 | `/posts/new`, `/posts/:id/edit` | 로그인 보호, 작성자 확인, Markdown 미리보기 |
-| 프로필 | `/profile` | 로그인 보호, 정보 수정, 게시글/댓글/좋아요한 글 |
+| 일반 사용자 | demo@example.com | Demo1234! |
+| 관리자 | admin@example.com | Admin1234! |
 
-## 실제 API로 전환
+관리자 로그인 후 헤더의 **관리자** 링크 또는 `/admin`으로 이동합니다. 데모 계정은 mock 전용이며 실제 API 모드에 자동 생성되지 않습니다. mock 비밀번호는 동작 확인용으로 브라우저에 평문 저장되므로 실제 개인정보를 입력하지 마세요.
 
-`.env.local`의 `VITE_DATA_MODE=api`로 바꾸고 개발 서버를 재시작합니다. API 오류 때 mock으로 자동 전환하지 않습니다. **실제 백엔드와의 연동은 아직 검증하지 않았으며 docs/API.md는 제안 계약입니다.**
+## 화면과 기능
 
-로컬에서는 두 컨테이너의 내부 3000 포트를 서로 다른 호스트 포트로 연결하세요. 예: Users `3001:3000`, Contents `3002:3000`. Vite가 `/api/auth`, `/api/users`를 3001로, `/api/posts`, `/api/comments`를 3002로 프록시합니다. 변경하려면 `USERS_PROXY_TARGET`, `CONTENTS_PROXY_TARGET` 값을 조정하세요. prefix는 제거하지 않습니다.
+| 경로 | 기능 |
+|---|---|
+| `/` | 메인, 인기 게시글, 카테고리 |
+| `/auth` | 로그인/회원가입, 로그인 유지 |
+| `/posts` | 목록, 검색, 카테고리, 정렬/페이징 |
+| `/posts/:id` | 상세, Markdown, 댓글, 좋아요 |
+| `/posts/new`, `/posts/:id/edit` | 글 작성/수정, Markdown 미리보기 |
+| `/profile` | 정보 수정, 내 활동 |
+| `/admin` | 관리자 운영 현황, 최근 게시글 |
+| `/admin/posts` | 글 검색/카테고리/전체 목록, 상세 보기, 사유 입력 후 삭제 |
+| `/admin/comments` | 댓글 검색/전체 목록/원문 이동, 사유 입력 후 삭제 |
+| `/admin/users` | 사용자 검색, ID/이메일/닉네임/가입일/권한 확인 |
 
-브라우저 fetch는 항상 `/api/...` 상대경로이며 서버 주소나 ECS IP를 코드에 넣지 않습니다. 운영에서는 Vite proxy가 적용되지 않고 ALB가 직접 분기합니다. 인증은 HttpOnly 쿠키를 제안하며 `credentials: include`를 사용합니다. 401 응답 시 AuthContext를 초기화하며 다음 보호 작업에서 로그인을 요청합니다. 백엔드 응답이 다르면 `src/api/index.js`에 어댑터를 추가하세요.
+관리자 요구사항은 첨부 기능 사진의 별도 권한·게시글 삭제·댓글 삭제·사용자 확인입니다. 회원 정지/탈퇴, 역할 변경, 신고 관리까지 추가하지 않았습니다. 비로그인 상태는 로그인 안내, 일반 계정은 관리자 접근 불가 안내를 보여줍니다. 서버는 모든 관리자 API에서 별도로 권한을 검증해야 합니다.
+
+## 실제 API 연결
+
+`.env.local`에서 `VITE_DATA_MODE=api`로 변경 후 서버를 재시작합니다. 로컬 Users/Contents 컨테이너는 각각 `3001:3000`, `3002:3000`처럼 호스트 포트를 구분하세요. `USERS_PROXY_TARGET`, `CONTENTS_PROXY_TARGET`은 Vite proxy 대상이며 브라우저 API는 항상 `/api/...` 상대경로입니다.
+
+팀원 어댑터 기준 인증은 JWT입니다. login에 `{username: email,password}`를 보내고 응답 token을 `Authorization: Bearer ...`로 사용합니다. 로그인 유지 시 localStorage, 그 외 sessionStorage. 로그아웃은 토큰을 지우며, 서버의 기존 JWT를 폐기하는 API는 없습니다. 기존 문서의 쿠키 인증/{data} envelope 설명을 이 버전에서 수정했습니다.
+
+**실제 서버 통합은 미검증입니다.** 기존 API는 팀원 코드가 기대하는 계약을 `docs/API.md`에 정리했고 신규 관리자 API는 `docs/ADMIN_API.md`를 백엔드 담당자에게 전달하세요. `/api/users/me`에 `role: "admin"`이 있어야 실제 모드에서 관리자 페이지에 들어갈 수 있습니다. role이 없으면 일반 계정으로 처리하며 관리자 API 오류 때 mock으로 자동 전환하지 않습니다.
+
+현재 실제 어댑터는 태그/글 유형/자기소개를 저장하지 않습니다. Q&A 목록은 빈 결과가 되고, 내 댓글/좋아요한 글은 API가 없어 표시하지 못합니다. 게시글 목록/내 글 통계는 서버가 내려준 최근 배열 범위입니다. mock에서는 이 기능들이 동작하지만 실제 API에 해당 컬럼/엔드포인트를 추가하기 전까지 동일하지 않습니다. 이미지 첨부, 알림, OAuth, 비밀번호 찾기, 댓글 수정/답글은 미구현입니다.
+
+## 검증 및 배포
 
 ```sh
 npm test
@@ -41,37 +56,34 @@ npm run build
 npm run preview
 ```
 
-`.env.production`을 포함하여 `npm run build`는 기본적으로 실제 API 모드입니다. 쉘에 설정한 VITE_DATA_MODE가 있다면 이를 우선하므로 운영 배포 전 API 모드인지 확인하세요. `dist/`를 EC2의 `/var/www/nangiryu/dist/`에 배치합니다. 데모 빌드를 원하면 `npm run build -- --mode development`를 사용하세요. ZIP의 소스만 전달하며 node_modules와 빌드 파일은 제외합니다. `.env.local`이나 비밀 키는 전달하지 마세요. `VITE_` 변수는 브라우저에 공개됩니다.
+`.env.production`으로 기본 운영 빌드는 API 모드입니다. mock 빌드가 필요하면 `npm run build -- --mode development`를 사용하세요. 쉘의 VITE_DATA_MODE는 파일보다 우선하므로 배포 전 값을 확인하세요.
 
-## 새 AWS 아키텍처 적용
+EC2에는 `dist/`만 배포하면 되고 Nginx가 제공합니다. Node.js 실행 서버나 관리자 페이지 전용 EC2는 필요하지 않습니다. 기존 ALB는 Users에 `/api/auth/*`, `/api/users`, `/api/users/*`, Contents에 `/api/posts`, `/api/posts/*`, `/api/comments`, `/api/comments/*`, 나머지는 프론트 EC2로 분기합니다. 새 관리자 API도 이 경로 안에 있습니다.
 
-참고 이미지: 블루팀 아키텍처-new 구조도. 사용자는 Cloudflare → AWS WAF가 연결된 ALB로 접속합니다. 기본 경로는 Private Web-App EC2의 Nginx로, API는 각각 ECS/Fargate로 보냅니다. RDS 접근은 백엔드에서만 수행합니다. 이미지의 이전 경로 표기보다 아래 팀 경로를 우선합니다.
+`deploy/nginx.conf`의 root 기본 예시는 `/var/www/nangiryu/dist`입니다. 연결된 채팅에서 `/var/www/frontend`를 사용했다면 **root와 실제 파일 배치 위치를 일치**시키세요. `/admin` 직접 접속/새로고침도 SPA fallback이 처리합니다. `/health`와 `/healthz` 모두 제공하며 기존 ALB 체크 경로와 맞추세요. API가 Nginx로 잘못 들어오면 HTML 200 대신 JSON 404를 반환합니다. 적용 전 `nginx -t` 검증 후 reload 하세요.
 
-| ALB 우선순위 | Path pattern | Target Group |
-|---|---|---|
-| 10 | `/api/auth/*`, `/api/users`, `/api/users/*` | Users ECS (IP, 3000) |
-| 20 | `/api/posts`, `/api/posts/*`, `/api/comments`, `/api/comments/*` | Contents ECS (IP, 3000) |
-| Default | 그 외 | Web-App EC2 (80) |
-
-`/api/posts/*` 외에 `/api/posts` 자체도 등록해야 목록/작성 요청을 처리합니다. HTTPS는 ALB/Cloudflare의 배포 설정에서 구성하고 EC2의 80번은 ALB에서만 접근하도록 제한하세요. Nginx 예시는 `deploy/nginx.conf`입니다. `/posts/p1` 직접 접속/새로고침을 `index.html`로 처리하며 잘못 들어온 `/api/`는 JSON 404로 반환합니다. Nginx health check 예시는 `/healthz`; ECS health endpoint는 각 백엔드 팀과 별도 합의하세요. 적용 전 `nginx -t`로 검증하고 reload 하세요.
-
-## 파일 구조
+## 구조와 전달 문서
 
 ```text
-src/
-  api/          # 상대경로 fetch client, 실제 endpoint adapter, mock 구현
-  context/      # AuthContext
-  components/   # Header, Footer, PostCard, CategorySidebar, 상태/보호 컴포넌트
-  data/         # 카테고리 정의
-  hooks/        # 로딩/오류/재시도, 이전 요청 결과 무시
-  pages/        # 6개 주요 화면
-  App.jsx       # 라우트와 에러 경계
-  styles.css    # 원본 디자인 기반 반응형 스타일
+src/api/client.js          # JWT + 상대경로 fetch
+src/api/real.js            # 팀원 API 어댑터 + 신규 관리자 계약
+src/api/mock.js            # 일반/관리자 mock 데이터 동작
+src/context/AuthContext.jsx
+src/auth/permissions.js    # role 확인
+src/components/           # 공통 화면 및 관리자 접근 안내
+src/pages/                # 원본 HTML/CSS에 맞춘 6개 화면
+src/pages/admin/          # 관리자 센터, 목록, 삭제 확인창
+tailwind.config.cjs        # 첨부 HTML의 색상/글꼴/크기 토큰
+design-reference/         # 첨부된 화면별 원본 HTML과 DESIGN.md
+public/                   # 원본 화면 로고/프로필 이미지
+docs/TEAM_CHANGES.md       # 팀원 ZIP의 변경점과 한계
+docs/API.md               # 팀원 어댑터가 기대하는 기존 API
+docs/ADMIN_API.md         # 백엔드 담당자에게 전달할 관리자 계약/구현 순서
+docs/VALIDATION.md         # 검증 결과
 deploy/nginx.conf
-docs/API.md     # 백엔드 전달용 계약 제안
-tests/          # 데이터 동작, 소유권, API 전환 핵심 검사
+tests/
 ```
 
-Markdown은 raw HTML을 렌더하지 않습니다. 등록/수정/삭제 권한은 mock에서도 검사하지만 실제 서비스는 반드시 서버에서 다시 검증해야 합니다. 이미지 업로드는 업로드 API가 미확정이라 안내와 확장 지점만 제공합니다. 알림, OAuth, 비밀번호 찾기, 관리자, 답글은 미구현입니다. 첨부 UI의 프로필 사진/배경과 로고 외부 자산은 대체했으므로 픽셀 단위 동일한 복제는 아닙니다.
+mock 저장소는 `nangiryu-demo-v2`, 로그인 상태는 `nangiryu-demo-session`. 기존 v1 데이터를 읽어 일반 사용자 역할을 유지하며 관리자 데모 계정을 추가합니다. admin@example.com을 일반 계정으로 이미 만들어둔 경우 자동 승격하지 않으므로 데모 저장소를 초기화해야 합니다. 초기화 시 개발자 도구에서 v1/v2/세션 키를 모두 제거하세요. API JWT 저장 키는 `nangiryu-token`입니다.
 
-기술 참고: [Vite 공식 가이드](https://vite.dev/guide/), [React Router 선언형 설치](https://reactrouter.com/start/declarative/installation).
+ZIP에는 소스/lockfile/문서/설정을 포함하고 node_modules, dist, 캐시, 개인 환경변수는 제외합니다. 실제 운영 관리자 비밀번호/토큰을 소스 또는 ZIP에 넣지 마세요. Markdown raw HTML은 렌더하지 않으며 클라이언트 입력 검증과 별개로 서버 검증이 필요합니다.

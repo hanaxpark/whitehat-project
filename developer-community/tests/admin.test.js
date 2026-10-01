@@ -1,0 +1,35 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { createMockApi } from '../src/api/mock.js';
+import { isAdmin } from '../src/auth/permissions.js';
+const memory=()=>{const values=new Map();return {getItem:key=>values.get(key)||null,setItem:(key,value)=>values.set(key,value),removeItem:key=>values.delete(key)};};
+test('관리자는 타인 글/댓글을 삭제하고 연결 댓글과 감사 기록을 처리한다',async()=>{
+  const storage=memory(),session=memory(),api=createMockApi(storage,session);
+  await assert.rejects(api.adminListUsers(),e=>e.status===401);
+  await api.login({email:'demo@example.com',password:'Demo1234!'});
+  await assert.rejects(api.adminListUsers(),e=>e.status===403);
+  await assert.rejects(api.adminListPosts(),e=>e.status===403);
+  await assert.rejects(api.adminListComments(),e=>e.status===403);
+  await assert.rejects(api.adminDeletePost('p2','부적절한 내용'),e=>e.status===403);
+  const admin=await api.login({email:'admin@example.com',password:'Admin1234!'});assert.ok(isAdmin(admin));
+  const users=await api.adminListUsers({q:'cloud_dev'});assert.equal(users.total,1);assert.equal(users.items[0].password,undefined);
+  const posts=await api.adminListPosts({category:'cloud',pageSize:1});assert.equal(posts.items[0].id,'p1');
+  assert.equal((await api.adminListComments()).total,2);
+  await assert.rejects(api.adminDeleteComment('c1',' '),e=>e.status===422);
+  await api.adminDeleteComment('c1','부적절한 댓글');assert.equal((await api.listComments('p1')).length,1);
+  await api.adminDeletePost('p1','운영 기준 위반');assert.equal((await api.adminListComments()).total,0);
+  await assert.rejects(api.getPost('p1'),e=>e.status===404);
+  const db=JSON.parse(storage.getItem('nangiryu-demo-v2'));assert.equal(db.audit.length,2);assert.equal(db.audit[1].actorId,admin.id);assert.equal(db.audit[1].reason,'운영 기준 위반');
+  const reload=createMockApi(storage,session);assert.equal((await reload.adminListPosts()).total,6);
+  await api.logout();await assert.rejects(api.adminDeletePost('p2','사유'),e=>e.status===401);
+});
+test('가입 요청, 프로필 수정, 이메일 문자열로 관리자 권한을 얻을 수 없다',async()=>{
+  const api=createMockApi(memory(),memory());
+  const user=await api.register({email:'normal@example.com',password:'Password123!',nickname:'일반회원',role:'admin'});
+  assert.equal(user.role,'user');
+  assert.equal(isAdmin(user),false);
+  await api.updateProfile({nickname:'administrator',bio:'운영자',role:'admin'});
+  assert.equal(isAdmin(await api.me()),false);
+  await assert.rejects(api.adminDeleteComment('c1','test'),e=>e.status===403);
+  assert.equal(isAdmin({email:'admin@example.com'}),false);assert.equal(isAdmin({role:'ADMIN'}),false);assert.equal(isAdmin(null),false);
+});
